@@ -3,11 +3,11 @@ use std::io;
 fn main() {
 	'convertion_choice: loop {
 		println!("Convert temperatures!\n Type '1' for converting from Celsius to Fahrenheit.\n Type '2' for converting from Fahrenheit to Celsius.\n Type 'q' for quitting.");
-		let choice = read_input();
-		if choice.trim() == "q" {
+		let choice = read_input().trim();
+		if choice == "q" {
 			break;
 		}
-		let choice: u32 =  match choice.trim().parse() {
+		let choice: u32 =  match choice.parse() {
 				Ok(num) => num,
 				Err(_) => {
 					println!("You must choose between '1' and '2'!");
@@ -25,12 +25,12 @@ fn main() {
 		}
 		
 		loop {
-			let temperature = read_input();
-			match temperature.trim() {
+			let temperature = read_input().trim();
+			match temperature {
 				"q" => break 'convertion_choice,
 				"c" => break,
 				_ => {
-					let temperature: f64 =  match temperature.trim().parse() {
+					let temperature: f64 =  match temperature.parse() {
 						Ok(num) => num,
 						Err(_) => {
 							println!("Input float number, please");
